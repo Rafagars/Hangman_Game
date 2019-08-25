@@ -1,0 +1,30 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="<%= url("css/bootstrap.min.css")%>">
+  <link rel="stylesheet" type="text/css" href="<%= url("css/style.css")%>">
+</head>
+<body class="text-center container">
+  <h1>Hangman Game</h1>
+  <%= "The word have #{secret_word.length} letters" %>
+  <br>
+  <img src="<%= url("img/hangman#{i}.png")%>">
+  <br>
+  <%= "Available letters: #{letters}" %>
+  <br>
+  <%= "You have #{i} guesses left." %>
+  <br>
+  <%= message %>
+  <br>
+  <%= final_message %>
+  <form method="post">
+    <br>
+    <label> Letter </label>
+    <input type="text" name="letter">
+    <label> Restart: </label>
+    <input type="radio" name="restart" value="true"> Yes
+    <input type="radio" name="restart" value="false" checked> No
+    <input type="submit" name="submit" value="Submit">
+  </form>
+
+</body>
+</html>
