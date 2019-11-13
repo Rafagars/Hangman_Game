@@ -147,7 +147,6 @@ get '/' do
   erb :index, :locals => {:letters => letters, :secret_word => secret_word, :message => message, :i => i, :final_message => final_message}
 end
 
-
 post '/' do
 
   restart = params['restart']

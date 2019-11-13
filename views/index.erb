@@ -16,15 +16,18 @@
   <%= message %>
   <br>
   <%= final_message %>
-  <form method="post">
+  <form id="gameForm" method="post">
     <br>
-    <label> Letter </label>
-    <input type="text" name="letter">
-    <label> Restart: </label>
-    <input type="radio" name="restart" value="true"> Yes
-    <input type="radio" name="restart" value="false" checked> No
-    <input type="submit" name="submit" value="Submit">
+    <% if i == 0%>
+      <input type="hidden" name="restart" value="true">
+      <input type="submit" name="submit" value="Restart">
+    <% else %>
+      <label> Letter </label>
+      <input type="text" name="letter" autocomplete="off">
+      <input type="hidden" name="restart" value="false">  
+      <input type="submit" name="submit" value="Submit">
+    <% end %>  
   </form>
-
+  <br>
 </body>
 </html>
