@@ -2,6 +2,8 @@ require 'sinatra'
 #require 'sinatra/reloader'
 require 'set'
 
+### Logic of the Game ###
+
 def load_words
   #Returns a list of valid words. Words are strings of lowercase letters
   #
@@ -78,63 +80,12 @@ def get_available_letters(letters_guessed)
   return letters
 end
 
-=begin
-def hangman(secret_word)
-  puts("The word have #{secret_word.length} letters")
-
-  letters_guessed = []
-
-  boolean = false
-
-  i = 8
-
-  while boolean == false
-    puts("You have #{i} guesses left.")
-
-    available_letters = get_available_letters(letters_guessed)
-
-    puts("Available letters: #{available_letters}")
-
-    puts("Please guess a letter: ")
-    letter = gets
-    letter = letter.downcase.chop
-
-    if letters_guessed.include?(letter)
-      puts("Oops! You've already guessed that letter")
-    else
-      letters_guessed.push(letter)
-    end
-
-    secret = get_guessed_word(secret_word, letters_guessed)
-
-    secret_word_copy = secret_word.split('')
-
-    if secret_word_copy.include?(letter)
-      puts("Good guess: #{secret}")
-    else
-      i -= 1
-      puts("Oops! That letter is not in the word: #{secret}")
-    end
-
-    if i == 0
-      puts("Sorry, you ran out of guesses")
-      puts("The word was #{secret_word}")
-      break
-    end
-
-    boolean = is_word_guessed(secret_word, letters_guessed)
-  end
-end
-=end
-
-
-#hangman(secret_word)
-
 letters_guessed = []
 secret_word = choose_word(word_list).downcase
 i = 8
 final_message = ''
 
+### Routes Logic ###
 
 get '/' do
 
@@ -183,6 +134,7 @@ post '/' do
 
   if is_word_guessed(secret_word, letters_guessed)
     final_message = "Correct, that is the word!"
+    i = 0
   end
 
   redirect back

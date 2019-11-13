@@ -18,7 +18,7 @@
   <%= final_message %>
   <form id="gameForm" method="post">
     <br>
-    <% if i == 0%>
+    <% if i <= 0%>
       <input type="hidden" name="restart" value="true">
       <input type="submit" name="submit" value="Restart">
     <% else %>
